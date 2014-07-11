@@ -18,7 +18,7 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
 	    *.main, *.main * {
 		width: 70%; 
 	    }
-	    pre {
+	    pre { 
 		padding: 3px 5px; border: 3px double;
 		background: #eee; overflow: auto;
 	    }
@@ -131,9 +131,9 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
  Generated markup will appear here.&lt;/textarea></pre></li>
 	    
 	    <li>Add entity identifiers as values for the <code>its-ta-ident-ref</code> attribute (see <a href="#simple-usage">simple usage</a>). The attribute is quite interesting (see <a href="http:///www.w3.org/TR/its20/#textanalysis-definition">details</a>).</li>
-	    <li>For all annotated entities, click on the <span class="entity">highlighted</span> <span class="noentityid">words</span> to generate the markup.</li>
+	    <li>For all annotated entities, click on the <span class="entity">highlighted</span> <span class="noentityid">words</span> to generate the markup.</li>  
 		</ol>
-	<h1>How do I customize it?</h1>
+	    <h1 id="setup">How do I set it up?</h1>
 	    <!--<h2 id="settings-file">Settings file, to be prepared by the content architect</h2> -->
 	    <p>The queries and the markup templates are defined in <a href="mlod4consettings.json">mlod4consettings.json</a>. Click <span onclick="var html = $.mlod4con.generateHTML();
 		$('#settingstable').html(html);" style="color: red;">here</span> to generate an HTML table (at the bottom of this page) that lists all options. Click <span onclick="var xml = $.mlod4con.generateXML();
