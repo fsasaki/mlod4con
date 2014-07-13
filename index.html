@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>MLOD4CON -
-Making Multilingual Linked Open Data Sources Accessible for Content Architects & Content Creators</title>
+	    Making Multilingual Linked Open Data Sources Accessible for Content Architects & Content Creators</title>
         <style type="text/css">
             *.entity { color: green;}
 	    *.noentityid { color: salmon;}
@@ -41,37 +41,42 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
 	    $.mlod4con.addListeners();"> 
 	<div class="main">
 	    <h1>MLOD4CON -
-Making Multilingual Linked Open Data Sources Accessible for Content Architects & Content Creators</h1>
-		
+		Making Multilingual Linked Open Data Sources Accessible for Content Architects & Content Creators</h1>
+
 	    <div class="toc">
-		<ul>
+		<ol>
 		    <li><a href="#what">Overview</a>
-			    <li><a href="#examples">Example usage</a>
-				    <li><a href="#simple-usage">Basic usage</a></li>
-<li><a href="#richer-markup-templates">Advanced usage I: Richer markup templates</a></li>
-<li><a href="#multilingual-templates_different-output-formats">Advanced usage II: Multilingual templates and different output formats</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#configuration">Configuration</a></li>
-<li><a href="#what-next">Development roadmap</a></li>
-<li><a href="#acks">Acknowledgements</a></li>
-		</ul>
+		    <li><a href="#examples">Usage</a>
+			<ul>
+		    <li><a href="#simple-usage">Basic usage</a></li>
+		    <li><a href="#richer-markup-templates">Advanced usage I: Richer markup templates</a></li>
+		    <li><a href="#multilingual-templates_different-output-formats">Advanced usage II: Multilingual templates and different output formats</a></li></ul></li>
+		    <li><a href="#installation">Installation</a></li>
+		    <li><a href="#configuration">Configuration</a></li>
+			    <li><a href="#additional-hints">Additional hints</a><ul>
+				    <li><a href="#setting-parameters-without-js">Setting parameters without JavaScript</a></li>
+				    <li><a href="#get-identifiers-for-entities">Getting identifiers for entities</a></li>
+			</ul></li>
+		    <li><a href="#what-next">Development roadmap</a></li>
+		    <li><a href="#acks">Acknowledgements</a></li>
+		</ol>
 	    </div>
-	    
+
 	    <h1 id="what">Overview</h1>
 	    <p>MLOD4CON (for "Multilingual Linked Open Data for Content Enrichment") is a JavaScript library that assists in enriching HTML5-based content - thus, increasing the content's value.</p>
 	    <p>MLOD4CON is open source and developed on <a href="https://github.com/fsasaki/mlod4con">GitHub</a>.</p>
-		<p>MLOD4CON is customizable.</p>
-		<p>MLOD4CON operates as follows:</p>
+	    <p>MLOD4CON is customizable.</p>
+	    <p>MLOD4CON operates as follows:</p>
 	    <ul>
 		<li>It scans the HTML5 content for so-called entity identifiers</li>
-			<li>It sends a query to a so-called <a href="http://linkeddata.org/">Linked Data source</a> (such as <a href="http://en.wikipedia.org/wiki/DBpedia">DBpedia</a>)</li>
+		<li>It sends a query to a so-called <a href="http://linkeddata.org/">Linked Data source</a> (such as <a href="http://en.wikipedia.org/wiki/DBpedia">DBpedia</a>)</li>
 		<li>It builds markup (defined by templates in the format of RDFa, Microdata or JSON-LD) from the results of the query</li>
 	    </ul>
 	    <p>One example usage of MLOD4CON is the generation of so-called schema.org markup that is an important ingredient to Search Engine Optimization (SEO).</p>
-		<h1 id="examples">Example usages</h1>
+	    <h1 id="examples">Example usages</h1>
 	    <h2 id="simple-usage">Basic usage</h2>
 	    <p>In order to use MLOD4CON without customization, you simply need to attach the <code>run()</code> method to an element</p>
-	    <p class="ex">Welcome to      
+	    <p class="ex">Welcome to        
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Frankfurt" onclick="
 			$.mlod4con.run(this);">Frankfurt</span>, the home of
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Johann_Wolfgang_von_Goethe" onclick="
@@ -105,10 +110,10 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
   $.mlod4con.run(this);">Samuel Beckett&lt;/span></pre>
 	    <h2 id="multilingual-templates_different-output-formats">Advanced usage II: Multilingual templates and different output formats</h2>
 	    <p>In order to customize the annotation that is generated with regards to language, you use the <code>setLanguage</code> method to set language tag tests in queries and to set language specific templates.</p>
-			<p>In order to customize the annotation that is generated with regards to format, you use the <code>setOutputMarkupType</code> method.</p>
-				<p>Three output formats are supported</p>
-				<ul><li>Microdata ('0'),</li><li> RDFa 1.1 Lite ('1')</li><li>JSON-LD ('2' but not yet implemented)</li></ul>
-				<p>Example:</p>
+	    <p>In order to customize the annotation that is generated with regards to format, you use the <code>setOutputMarkupType</code> method.</p>
+	    <p>Three output formats are supported</p>
+	    <ul><li>Microdata ('0'),</li><li> RDFa 1.1 Lite ('1')</li><li>JSON-LD ('2' but not yet implemented)</li></ul>
+	    <p>Example:</p>
 	    <p class="ex">Willkommen in
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Dublin" onclick="
 			$.mlod4con.setLanguage('de');
@@ -135,22 +140,21 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
   $.mlod4con.setMarkupTemplates('Person-specific,Person-general');
   $.mlod4con.setOutputMarkupType('1');
   $.mlod4con.run(this);">Samuel Beckett&lt;/span></pre>
-  	    <h2 id="installation">Installation</h2>
-		<ol>
-		    <li>Download the MLOD4CON files and add the following to your HTML document:<br/><pre>&lt;script src="jquery-1.11.1.min.js">&lt;/script>
+	    <h1 id="installation">Installation</h1>
+	    <p>Download the MLOD4CON files and add the following to your HTML document:</p>
+	    <pre>&lt;script src="jquery-1.11.1.min.js">&lt;/script>
 &lt;script src="mlod4consettings.json">&lt;/script>
-&lt;script src="mlod4con.js">&lt;/script></pre></li>
-	    <li>If you simply want to create a page for demonstration purposes, also add the following textarea element. The generated markup will appear here:<br/><pre>&lt;textarea name="myfield" id="myfield" rows="20" cols="40">
- Generated markup will appear here.&lt;/textarea></pre></li>
-	    
-	    <li>Add entity identifiers as values for the <code>its-ta-ident-ref</code> attribute (see <a href="#simple-usage">simple usage</a>). The attribute is quite interesting (see <a href="http:///www.w3.org/TR/its20/#textanalysis-definition">details</a>).</li>
-	    <li>For all annotated entities, click on the <span class="entity">highlighted</span> <span class="noentityid">words</span> to generate the markup.</li>  
-		</ol>
+&lt;script src="mlod4con.js">&lt;/script></pre>
+	    <p>If you simply want to create a page for demonstration purposes, also add the following textarea element. The generated markup will appear here:</p><pre>&lt;textarea name="myfield" id="myfield" rows="20" cols="40">
+ Generated markup will appear here.&lt;/textarea></pre>
+
+		<p>Add entity identifiers as values for the <code>its-ta-ident-ref</code> attribute (see <a href="#simple-usage">simple usage</a>). The attribute is quite interesting (see <a href="http:///www.w3.org/TR/its20/#textanalysis-definition">details</a>).</p>
+		<p>For all annotated entities, click on the <span class="entity">highlighted</span> <span class="noentityid">words</span> to generate the markup.</p>  
 	    <h1 id="configuration">Configuration</h1>
 	    <!--<h2 id="settings-file">Settings file, to be prepared by the content architect</h2> -->
 	    <p>The queries and the markup templates are configured in <a href="mlod4consettings.json">mlod4consettings.json</a>. Click <span onclick="var html = $.mlod4con.generateHTML();
-		$('#settingstable').html(html);" style="color: red;">here</span> to generate an HTML table (at the bottom of this page) that lists all options. Click <span onclick="var xml = $.mlod4con.generateXML();
-		    console.log(xml);" style="color: blue;">here</span> to generate XML (in the textarea to the right) that lists all options.</p>
+		    $('#settingstable').html(html);" style="color: red;">here</span> to generate an HTML table (at the bottom of this page) that lists all options. Click <span onclick="var xml = $.mlod4con.generateXML();
+			    console.log(xml);" style="color: blue;">here</span> to generate XML (in the textarea to the right) that lists all options.</p>
 	    <p>Anatomy of a query:</p>
 	    <ul>
 		<li>name, e.g. <code>dbpedia-query</code></li>
@@ -166,8 +170,8 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
 		<li>mappings. Here one or more types are given. The output of the query, i.e. the value of the <code>type</code> variable, is used for matching the type.</li>
 		<li>output in RDFa and Microdata (JSON-LD will follow). The output contains placeholders to be filled by variables, e.g. <code>##X##wikiPage##Y##</code> to be filled by value of the <code>wikiPage</code> variable. A template is only used if all variables can be filled.</li>
 	    </ul>
-		<h1>Additional Hints</h1>
-	    <h2>Setting parameter values without JavaScript</h2>
+	    <h1 id="additional-hints">Additional Hints</h1>
+	    <h2 id="setting-parameters-without-js">Setting parameter values without JavaScript</h2>
 	    <p>All parameters for calling MLOD4CON can be set without JavaScript. The content author can also add a <code>data-mlod4con</code> attribute. It holds the parameters separated by semicolon. Example:</p>
 	    <p class="ex">Willkommen in
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Dublin"data-mlod4con="language='de';markupTemplates='Place-specific,Place-general';outputMarkupType='1';">Dublin</span>, der Heimat von
@@ -185,7 +189,7 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
   "language='de';
   markupTemplates='Person-specific,Person-general';
   outputMarkupType='1';">Samuel Beckett&lt;/span></pre>	
-	    <h2 id="get-labels-for-entities">Getting identifiers for entities</h2>   
+	    <h2 id="get-identifiers-for-entities">Getting identifiers for entities</h2>   
 	    <p>The <code>getEntityID</code> method can be used generate identifiers. It takes an element as input and generates markup for its content. Example:</p>
 	    <p class="ex">Welcome to <span onclick="
 		    $.mlod4con.getEntityID(this);" class="noentityid">Dublin</span>, the home of <span onclick="
@@ -202,7 +206,7 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
  onclick="
  $.mlod4con.form2Markup($('#inputtext'));">click here&lt;/span> ...
  &lt;input id="inputtext">...</pre>
-	
+
 	    <h2 id="what-next">Development Roadmap</h2>
 	    <p>This is the first version of MLOD4CON. It provides only a small set of templates and relies on DBpedia as sole SPARQL endpoint. Future versions of MLOD4CON may include:</p>
 	    <ul>
@@ -216,13 +220,11 @@ Making Multilingual Linked Open Data Sources Accessible for Content Architects &
 	    <hr/>
 	    <h2 id="contact">Contact</h2>
 	    <p>For questions, comments etc. contact <a href="mailto:fsasaki@w3.org">Felix Sasaki</a></p>
-	    <hr/>
-	    <p>Last modified: <script>document.write(document.lastModified);</script></p>
 	    <div id="settingstable"></div>
 	</div>
 	<div class="textarea" id="mytextarea">
 	    <p>Generated markup will appear here.<br/><span onclick="$('#myfield').toggle();" class="clickme">Click here</span> to hide &amp; show the textarea.</p>
-	<textarea name="myfield" id="myfield" rows="20" cols="40"></textarea>
+	    <textarea name="myfield" id="myfield" rows="20" cols="40"></textarea>
 	</div>
 	<script src="jquery-1.11.1.min.js"></script>
 	<script src="mlod4consettings.json"></script>
