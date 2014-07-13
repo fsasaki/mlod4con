@@ -77,37 +77,37 @@
 	    <h2 id="simple-usage">Basic usage</h2>
 	    <p>In order to use MLOD4CON without customization, you simply need to attach the <code>run()</code> method to an element</p>
 	    <p class="ex">Welcome to        
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Frankfurt" onclick="
-			$.mlod4con.run(this);">Frankfurt</span>, the home of
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Johann_Wolfgang_von_Goethe" onclick="
-			$.mlod4con.run(this);">Johann Wolfgang von Goethe</span>!</p>
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin" onclick="
+			$.mlod4con.run(this);">Berlin</span>, the home of
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
+			$.mlod4con.run(this);">Marlene Dietrich</span>!</p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Frankfurt"
- onclick="$.mlod4con.run(this);">Frankfurt&lt;/span></pre>
+ its-ta-ident-ref="http://dbpedia.org/resource/Berlin"
+ onclick="$.mlod4con.run(this);">Berlin&lt;/span></pre>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Johann_Wolfgang_von_Goethe"
- onclick="$.mlod4con.run(this);">Johann Wolfgang von Goethe&lt;/span></pre>
+ its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich"
+ onclick="$.mlod4con.run(this);">Marlene Dietrich&lt;/span></pre>
 	    <h2 id="richer-markup-templates">Advanced usage I: Richer markup templates</h2>
 	    <p>In order to generally customize the annotation that is generated, you use the <code>setMarkupTemplates</code> method. The order of templates given as a paramter is significant. The first template that completely matches to the query will be used. Example:</p>
 	    <p class="ex">Welcome to     
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Dublin" onclick="
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin" onclick="
 			$.mlod4con.setMarkupTemplates('Place-specific,Place-general');
-			$.mlod4con.run(this);">Dublin</span>, the home of
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett" onclick="
+			$.mlod4con.run(this);">Berlin</span>, the home of
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
 			$.mlod4con.setMarkupTemplates('Person-specific,Person-general');
-			$.mlod4con.run(this);">Samuel Beckett</span>!</p>
+			$.mlod4con.run(this);">Marlene Dietrich</span>!</p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Dublin"
+ its-ta-ident-ref="http://dbpedia.org/resource/Berlin"
  onclick="
   $.mlod4con.setMarkupTemplates('Place-specific,Place-general');
-  $.mlod4con.run(this);">Dublin&lt;/span></pre>
+  $.mlod4con.run(this);">Berlin&lt;/span></pre>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett"
+ its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich"
  onclick="
   $.mlod4con.setMarkupTemplates('Person-specific,Person-general');
-  $.mlod4con.run(this);">Samuel Beckett&lt;/span></pre>
+  $.mlod4con.run(this);">Marlene_Dietrich&lt;/span></pre>
 	    <h2 id="multilingual-templates_different-output-formats">Advanced usage II: Multilingual templates and different output formats</h2>
 	    <p>In order to customize the annotation that is generated with regards to language, you use the <code>setLanguage</code> method to set language tag tests in queries and to set language specific templates.</p>
 	    <p>In order to customize the annotation that is generated with regards to format, you use the <code>setOutputMarkupType</code> method.</p>
@@ -115,31 +115,31 @@
 	    <ul><li>Microdata ('0'),</li><li> RDFa 1.1 Lite ('1')</li><li>JSON-LD ('2' but not yet implemented)</li></ul>
 	    <p>Example:</p>
 	    <p class="ex">Willkommen in
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Dublin" onclick="
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin" onclick="
 			$.mlod4con.setLanguage('de');
 			$.mlod4con.setMarkupTemplates('Place-specific,Place-general');
 			$.mlod4con.setOutputMarkupType('1');
-			$.mlod4con.run(this);">Dublin</span>, der Heimat von
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett" onclick="
+			$.mlod4con.run(this);">Berlin</span>, der Heimat von
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
 			$.mlod4con.setLanguage('de');
 			$.mlod4con.setMarkupTemplates('Person-specific,Person-general');
 			$.mlod4con.setOutputMarkupType('1');
-			$.mlod4con.run(this);" id="myexample">Samuel Beckett</span>!</p>
+			$.mlod4con.run(this);" id="myexample">Marlene Dietrich</span>!</p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Dublin"
+ its-ta-ident-ref="http://dbpedia.org/resource/Berlin"
  onclick="
   $.mlod4con.setLanguage('de');
   $.mlod4con.setMarkupTemplates('Place-specific,Place-general');
   $.mlod4con.setOutputMarkupType('1');
-  $.mlod4con.run(this);">Dublin&lt;/span></pre>
+  $.mlod4con.run(this);">Berlin&lt;/span></pre>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett"
+ its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich"
  onclick="
   $.mlod4con.setLanguage('de');
   $.mlod4con.setMarkupTemplates('Person-specific,Person-general');
   $.mlod4con.setOutputMarkupType('1');
-  $.mlod4con.run(this);">Samuel Beckett&lt;/span></pre>
+  $.mlod4con.run(this);">Marlene Dietrich&lt;/span></pre>
 	    <h1 id="installation">Installation</h1>
 	    <p>Download the MLOD4CON files and add the following to your HTML document:</p>
 	    <pre>&lt;script src="jquery-1.11.1.min.js">&lt;/script>
@@ -174,33 +174,33 @@
 	    <h2 id="setting-parameters-without-js">Setting parameter values without JavaScript</h2>
 	    <p>All parameters for calling MLOD4CON can be set without JavaScript. The content author can also add a <code>data-mlod4con</code> attribute. It holds the parameters separated by semicolon. Example:</p>
 	    <p class="ex">Willkommen in
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Dublin"data-mlod4con="language='de';markupTemplates='Place-specific,Place-general';outputMarkupType='1';">Dublin</span>, der Heimat von
-		<span its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett" data-mlod4con="language='de';markupTemplates='Person-specific,Person-general';outputMarkupType='1';">Samuel Beckett</span>!</p> 
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin"data-mlod4con="language='de';markupTemplates='Place-specific,Place-general';outputMarkupType='1';">Berlin</span>, der Heimat von
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" data-mlod4con="language='de';markupTemplates='Person-specific,Person-general';outputMarkupType='1';">Marlene Dietrich</span>!</p> 
 	    <p>Source code:</p>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Dublin"
+ its-ta-ident-ref="http://dbpedia.org/resource/Berlin"
  data-mlod4con=
   "language='de';
   markupTemplates='Place-specific,Place-general';
-  outputMarkupType='1';">Dublin&lt;/span></pre>
+  outputMarkupType='1';">Berlin&lt;/span></pre>
 	    <pre>&lt;span
- its-ta-ident-ref="http://dbpedia.org/resource/Samuel_Beckett"
+ its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich"
  data-mlod4con=
   "language='de';
   markupTemplates='Person-specific,Person-general';
-  outputMarkupType='1';">Samuel Beckett&lt;/span></pre>	
+  outputMarkupType='1';">Marlene Dietrich&lt;/span></pre>	
 	    <h2 id="get-identifiers-for-entities">Getting identifiers for entities</h2>   
 	    <p>The <code>getEntityID</code> method can be used generate identifiers. It takes an element as input and generates markup for its content. Example:</p>
 	    <p class="ex">Welcome to <span onclick="
-		    $.mlod4con.getEntityID(this);" class="noentityid">Dublin</span>, the home of <span onclick="
-			    $.mlod4con.getEntityID(this);" class="noentityid">Samuel Beckett</span>!</p> 
+		    $.mlod4con.getEntityID(this);" class="noentityid">Berlin</span>, the home of <span onclick="$.mlod4con.setMarkupTemplates('Person-specific,Person-general');
+			    $.mlod4con.getEntityID(this);" class="noentityid">Marlene Dietrich</span>!</p> 
 	    <p>Source code:</p>
 	    <pre>&lt;span
  onclick="$.mlod4con.getEntityID(this);">Dublin&lt;/span>
 &lt;span
  onclick="$.mlod4con.getEntityID(this);">Samuel Beckett&lt;/span></pre>
 	    <p>A form can be used to enter a string and look up the entity + generate markup. Example:</p>
-	    <p class="ex">Type some stuff and then <span onclick="$.mlod4con.form2Markup($('#inputtext'));" class="clickme">click here</span>!: <input name="inputtext" type="text" size="30" maxlength="30" id="inputtext" value="Dublin"></p>
+	    <p class="ex">Type some stuff and then <span onclick="$.mlod4con.form2Markup($('#inputtext'));" class="clickme">click here</span>!: <input name="inputtext" type="text" size="30" maxlength="30" id="inputtext" value="Berlin"></p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
  onclick="
