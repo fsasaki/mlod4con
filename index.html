@@ -7,7 +7,7 @@
         <style type="text/css">
             *.entity { color: green;}
 	    *.noentityid { color: salmon;}
-	    *.textarea {
+	    *.outputarea {
 		position: fixed;
 		left: 70%; 
 		top: 15%;
@@ -196,11 +196,11 @@
 			    $.mlod4con.getEntityID(this);" class="noentityid">Marlene Dietrich</span>!</p> 
 	    <p>Source code:</p>
 	    <pre>&lt;span
- onclick="$.mlod4con.getEntityID(this);">Dublin&lt;/span>
+ onclick="$.mlod4con.getEntityID(this);">Berlin&lt;/span>
 &lt;span
- onclick="$.mlod4con.getEntityID(this);">Samuel Beckett&lt;/span></pre>
+ onclick="$.mlod4con.getEntityID(this);">Marlene Dietrich&lt;/span></pre>
 	    <p>A form can be used to enter a string and look up the entity + generate markup. Example:</p>
-	    <p class="ex">Type some stuff and then <span onclick="$.mlod4con.form2Markup($('#inputtext'));" class="clickme">click here</span>!: <input name="inputtext" type="text" size="30" maxlength="30" id="inputtext" value="Berlin"></p>
+	    <p class="ex">Type some stuff and then <span onclick="$.mlod4con.form2Markup($('#inputtext'));" class="clickme">click here</span>!: <input name="inputtext" type="text" size="30" maxlength="100" id="inputtext" value="Berlin"></p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
  onclick="
@@ -219,11 +219,12 @@
 	    <p>MLOD4CON is being developed with support from the <a href="http://lider-project.eu/">LIDER project</a>. A special thanks goes to Christian Lieske (SAP SE) for his contribution to the documentation.</p>
 	    <hr/>
 	    <h2 id="contact">Contact</h2>
-	    <p>For questions, comments etc. contact <a href="mailto:fsasaki@w3.org">Felix Sasaki</a></p>
+	    <p>For questions, comments etc. contact <a href="mailto:fsasaki@w3.org">Felix Sasaki</a>.</p>
 	    <div id="settingstable"></div>
 	</div>
-	<div class="textarea" id="mytextarea">
+	<div class="outputarea" id="mytextarea">
 	    <p>Generated markup will appear here.<br/><span onclick="$('#myfield').toggle();" class="clickme">Click here</span> to hide &amp; show the textarea.</p>
+	    	    <div id="mytabluaroutput"></div>
 	    <textarea name="myfield" id="myfield" rows="20" cols="40"></textarea>
 	</div>
 	<script src="jquery-1.11.1.min.js"></script>

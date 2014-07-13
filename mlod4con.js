@@ -299,9 +299,39 @@
         $('textarea[name="myfield"]').val("");
         $('textarea[name="myfield"]').val(templateFilled);
         output.push(entityIdentifier, templateFilled);
+        return writeTabluarOutput(relevantResults, templateToBeUsed);
+    }
+    ;
+
+    var writeTabluarOutput = function(relevantResults, templateToBeUsed) {
+        var templateFilled = "";
+        var templateBits = [];
+                templateBits = templateToBeUsed.tabluarOutput.split("##X##");
+        ;
+        templateFilled = templateFilled + templateBits[0];
+        $.each(templateBits, function(index, item) {
+            var itemToFill = "";
+            if (index > 0) {
+                var position = item.toString().indexOf("##Y##");
+                var variableKey = item.toString().substring(0, position);
+                var bitRest = item.toString().substring(position + 5);
+                $.each(relevantResults[0], function(index, value) {
+                    if (value[variableKey].toString()) {
+                        itemToFill = (value[variableKey].toString() + bitRest);
+                    }
+                    ;
+                });
+                templateFilled = templateFilled + itemToFill;
+            }
+            ;
+        });
+        templateFilled = templateFilled.replaceAll("@@@content@@@", content);
+        templateFilled = templateFilled.replaceAll("@@@entityIdentifier@@@", entityIdentifier);
+        $('div[id="mytabluaroutput"]').html(templateFilled);
         reset();
     }
     ;
+
 
     var form2Markup = function(inputelem) {
         var inputtext = inputelem.serialize();
