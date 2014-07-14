@@ -11,6 +11,8 @@
 		position: fixed;
 		left: 70%; 
 		top: 15%;
+		width: 25%;
+		padding: 3px 5px; border: 3px double; border-color: blue;
 	    }
 	    h1 {
 		text-align: center;
@@ -123,7 +125,7 @@
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
 			$.mlod4con.setLanguage('de');
 			$.mlod4con.setMarkupTemplates('Person-specific,Person-general');
-			$.mlod4con.setOutputMarkupType('1');
+			$.mlod4con.setOutputMarkupType('1'); 
 			$.mlod4con.run(this);" id="myexample">Marlene Dietrich</span>!</p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
@@ -227,6 +229,7 @@
 	</div>
 	<div class="outputarea" id="mytextarea">
 	    <p>Generated markup will appear here.<br/><span onclick="$('#myfield').toggle();" class="clickme">Click here</span> to hide &amp; show the textarea.</p>
+	    <hr/>
 	    	    <div id="mytabluaroutput"></div>
 	    <textarea name="myfield" id="myfield" rows="20" cols="40"></textarea>
 	</div>
