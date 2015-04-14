@@ -11,6 +11,7 @@
     var content = ""; //the textual content of the element that is processed.
     var language = "default"; //the language for markup templates and language filters in SPARQL queries. default is English and can be set to other languages.
     var entityIdentifier = ""; // the identifier used for querying linked data sources. 
+    var parameters = ""; //parameters passed onto the query
     var outputMarkupType = "0"; //0 means microdata, 1 means rdfa, 2 means json-ld.
     var output = new Array(); //Array of markup generated. Always two items: LD identifier + markup.
 
@@ -83,19 +84,21 @@
             var onclickString = "";
             var currentElem = $(this);
             var dataattr = $(currentElem).attr('data-mlod4con');
-            var parameters = dataattr.split(';');
-            $.each(parameters, function(indexP, item) {
-                var parameterType = item.substring(0, item.indexOf('=')).trim();
-                var parameterValue = item.substring(item.indexOf('=') + 1, item.length).trim();
-                switch (parameterType) {
+            var options = dataattr.split(';');
+            $.each(options, function(indexP, item) {
+                var optionType = item.substring(0, item.indexOf('=')).trim();
+                var optionValue = item.substring(item.indexOf('=') + 1, item.length).trim();
+                switch (optionType) {
                     case "markupTemplates":
-                        onclickString = onclickString + "$.mlod4con.setMarkupTemplates(" + parameterValue + ");";
+                        onclickString = onclickString + "$.mlod4con.setMarkupTemplates(" + optionValue + ");";
                         break;
                     case "language" :
-                        onclickString = onclickString + "$.mlod4con.setLanguage(" + parameterValue + ");";
+                        onclickString = onclickString + "$.mlod4con.setLanguage(" + optionValue + ");";
                         break;
                     case "outputMarkupType" :
-                        onclickString = onclickString + "$.mlod4con.setOutputMarkupType(" + parameterValue + ");";
+                        onclickString = onclickString + "$.mlod4con.setOutputMarkupType(" + optionValue + ");";
+                    case "parameters" :
+                        onclickString = onclickString + "$.mlod4con.setParameters(" + optionValue + ");";
                 }
                 ;
             });
@@ -116,6 +119,15 @@
                     query[0] = query[0].replaceAll("@@@language@@@", "en");
                 }
                 ;
+                if (parameters !== "") {
+                    var parametersList = parameters.split('|');//Separater for parameters is '|'
+                     $.each(parametersList, function(indexP, item) {
+               var parameterName = "@@@" + item.substring(0, item.indexOf('=')).trim() + "@@@";
+               var parameterValue = item.substring(item.indexOf('=') + 1, item.length).trim();
+               console.log("parameter: " + parameterName + "value: " + parameterValue);
+               query[0] = query[0].replaceAll(parameterName, parameterValue);
+            });
+                };
                 query[1] = element.endpoint;
                 if (element.relevantTemplates && markupTemplates === "") {
                     markupTemplates = element.relevantTemplates;
@@ -123,6 +135,7 @@
                     (console.log("using user templates: ") + markupTemplates);
             }
         });
+        console.log("complete query: " + query);
         return query;
     }
     ;
@@ -371,6 +384,9 @@
     var setOutputMarkupType = function(userOutputMarkupType) {
         outputMarkupType = userOutputMarkupType;
     };
+    var setParameters = function(userParameters) {
+        parameters = userParameters;
+    };
 
 //executing everything
     var run = function(element) {
@@ -399,7 +415,8 @@
         setQuery: setQuery,
         setMarkupTemplates: setMarkupTemplates,
         setOutputMarkupType: setOutputMarkupType,
-        setLanguage: setLanguage
+        setLanguage: setLanguage,
+        setParameters : setParameters
     };
 }
 )(jQuery, window, document);

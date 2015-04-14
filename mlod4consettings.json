@@ -14,8 +14,15 @@ var jsonObject =
                             "queryTemplate": "SELECT ?wikiPage ?type ?birthPlaceURI ?birthPlaceLabel WHERE \n{ \n<@@@entity@@@> <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wikiPage. \n<@@@entity@@@> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type. <@@@entity@@@> <http://dbpedia.org/ontology/birthPlace> ?birthPlace. ?birthPlace <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?birthPlaceURI. ?birthPlace <http://www.w3.org/2000/01/rdf-schema#label> ?birthPlaceLabel.\nFILTER(langMatches(lang(?birthPlaceLabel), '@@@language@@@'))} ",
                             "relevantTemplates": "Person-specific"
                         },
+                                               {
+                            "name": "dbpedia-person-query-with-parameters",
+                            "endpoint": "http://dbpedia-live.openlinksw.com/sparql?",
+                            "queryTemplate": "SELECT ?wikiPage ?type ?birthPlaceURI ?birthPlaceLabel WHERE \n{ \n<@@@entity@@@> <@@@somePredicate@@@> ?wikiPage. \n<@@@entity@@@> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type. <@@@entity@@@> <http://dbpedia.org/ontology/birthPlace> ?birthPlace. ?birthPlace <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?birthPlaceURI. ?birthPlace <http://www.w3.org/2000/01/rdf-schema#label> ?birthPlaceLabel.\nFILTER(langMatches(lang(?birthPlaceLabel), '@@@language@@@'))} ",
+                            "relevantTemplates": "Person-specific"
+                        }
+                        ,
                         {
-                            "name": "dbpedia-place-specifc-query",
+                            "name": "dbpedia-place-specific-query",
                             "endpoint": "http://dbpedia-live.openlinksw.com/sparql?",
                             "queryTemplate": "SELECT ?wikiPage ?type ?lat ?long WHERE \n{ \n<@@@entity@@@> <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wikiPage. \n<@@@entity@@@> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type.\n<@@@entity@@@> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat. \n<@@@entity@@@> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long. } ",
                             "relevantTemplates": "Place-specific"

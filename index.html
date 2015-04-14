@@ -18,7 +18,7 @@
 		text-align: center;
 	    }
 	    *.main, *.main * {
-		width: 70%; 
+		width: 73%; 
 	    }
 	    pre { 
 		padding: 3px 5px; border: 3px double;
@@ -56,7 +56,7 @@
 		    <li><a href="#installation">Installation</a></li>
 		    <li><a href="#configuration">Configuration</a></li>
 			    <li><a href="#additional-hints">Additional hints</a><ul>
-				    <li><a href="#setting-parameters-without-js">Setting parameters without JavaScript</a></li>
+				    <li><a href="#setting-options-without-js">Setting options without JavaScript</a></li>
 				    <li><a href="#get-identifiers-for-entities">Getting identifiers for entities</a></li>
 			</ul></li>
 		    <li><a href="#what-next">Development roadmap</a></li>
@@ -74,7 +74,7 @@
 		<li>It sends a query to a so-called <a href="http://linkeddata.org/">Linked Data source</a> (such as <a href="http://en.wikipedia.org/wiki/DBpedia">DBpedia</a>)</li>
 		<li>It builds markup (defined by templates in the format of RDFa, Microdata or JSON-LD) from the results of the query</li>
 	    </ul>
-	    <p>One example usage of MLOD4CON is the generation of so-called schema.org markup that is an important ingredient to Search Engine Optimization (SEO).</p>
+	    <p>One example usage of MLOD4CON is the generation of so-called schema.org markup that is an important ingredient to Search Engine Optimization (SEO).</p> 
 	    <h1 id="examples">Example usages</h1>
 	    <h2 id="simple-usage">Basic usage</h2>
 	    <p>In order to use MLOD4CON without customization, you simply need to attach the <code>run()</code> method to an element</p>
@@ -82,7 +82,7 @@
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin" onclick="
 			$.mlod4con.run(this);">Berlin</span>, the home of
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
-			$.mlod4con.run(this);">Marlene Dietrich</span>!</p>
+		    $.mlod4con.run(this);">Marlene Dietrich</span>!</p>
 	    <p>Source code:</p>
 	    <pre>&lt;span
  its-ta-ident-ref="http://dbpedia.org/resource/Berlin"
@@ -91,7 +91,7 @@
  its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich"
  onclick="$.mlod4con.run(this);">Marlene Dietrich&lt;/span></pre>
 	    <h2 id="richer-markup-templates">Advanced usage I: Richer markup templates</h2>
-	    <p>In order to generally customize the annotation that is generated, you use the <code>setMarkupTemplates</code> method. The order of templates given as a paramter is significant. The first template that completely matches to the query will be used. Example:</p>
+	    <p>In order to generally customize the annotation that is generated, you use the <code>setMarkupTemplates</code> method. The order of templates given as an option is significant. The first template that completely matches to the query will be used. Example:</p>
 	    <p class="ex">Welcome to     
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin" onclick="
 			$.mlod4con.setMarkupTemplates('Place-specific,Place-general');
@@ -110,6 +110,19 @@
  onclick="
   $.mlod4con.setMarkupTemplates('Person-specific,Person-general');
   $.mlod4con.run(this);">Marlene_Dietrich&lt;/span></pre>
+	    <p id="parameters">The <code>setParameters</code> option allows to pass arbitrary parameters to a query. Example:</p>
+	    <p class="ex">A query of 
+		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
+			$.mlod4con.setQuery('dbpedia-person-query-with-parameters');
+			$.mlod4con.setParameters('somePredicate=http://dbpedia.org/property/birthPlace');
+			$.mlod4con.run(this);">Marlene Dietrich</span>!</p>
+				<p>The parameter <code>somePredicate</code> is replaced in the SPAQRL query string with the value<br/>
+				    <code>http://dbpedia.org/property/birthPlace</code>. A list of parameters can be separated via <code>|</code>.</p>
+	<p>Source code:</p>
+	<pre>&lt;span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" onclick="
+ $.mlod4con.setQuery('dbpedia-person-query-with-parameters');
+ $.mlod4con.setParameters('somePredicate=http://dbpedia.org/property/birthPlace');
+ $.mlod4con.run(this);">Marlene Dietrich&lt;/span></pre>
 	    <h2 id="multilingual-templates_different-output-formats">Advanced usage II: Multilingual templates and different output formats</h2>
 	    <p>In order to customize the annotation that is generated with regards to language, you use the <code>setLanguage</code> method to set language tag tests in queries and to set language specific templates.</p>
 	    <p>In order to customize the annotation that is generated with regards to format, you use the <code>setOutputMarkupType</code> method.</p>
@@ -173,8 +186,8 @@
 		<li>output in RDFa and Microdata (JSON-LD will follow). The output contains placeholders to be filled by variables, e.g. <code>##X##wikiPage##Y##</code> to be filled by value of the <code>wikiPage</code> variable. A template is only used if all variables can be filled.</li>
 	    </ul>
 	    <h1 id="additional-hints">Additional Hints</h1>
-	    <h2 id="setting-parameters-without-js">Setting parameter values without JavaScript</h2>
-	    <p>All parameters for calling MLOD4CON can be set without JavaScript. The content author can also add a <code>data-mlod4con</code> attribute. It holds the parameters separated by semicolon. Example:</p>
+	    <h2 id="setting-options-without-js">Setting options values without JavaScript</h2>
+	    <p>All options for calling MLOD4CON can be set without JavaScript. The content author can also add a <code>data-mlod4con</code> attribute. It holds the options separated by semicolon. Example:</p>
 	    <p class="ex">Willkommen in
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Berlin"data-mlod4con="language='de';markupTemplates='Place-specific,Place-general';outputMarkupType='1';">Berlin</span>, der Heimat von
 		<span its-ta-ident-ref="http://dbpedia.org/resource/Marlene_Dietrich" data-mlod4con="language='de';markupTemplates='Person-specific,Person-general';outputMarkupType='1';">Marlene Dietrich</span>!</p> 
