@@ -1,7 +1,7 @@
 var jsonObject =
 
         {
-            "queries": 
+            "queries":
                     [{
                             "name": "dbpedia-query",
                             "endpoint": "http://dbpedia-live.openlinksw.com/sparql?",
